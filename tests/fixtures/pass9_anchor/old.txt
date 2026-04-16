@@ -1,0 +1,3 @@
+def run():
+    # ... rest of code ...
+    teardown()

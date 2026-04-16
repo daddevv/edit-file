@@ -1,0 +1,2 @@
+    total = first + second
+    return total

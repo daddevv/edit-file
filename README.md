@@ -41,3 +41,20 @@ For heavily structured languages (Python, Rust, C++), Pass 8 parses the file int
 ## Pass 9: Context-Aware Anchor Bounding Boxes
 
 The final pass attempts to match based solely on the first and last lines of the old_text block, treating them as semantic anchors. SLMs, prone to the lazy coding phenomenon, often generate correct headers and footers for a code block but summarize or hallucinate the middle of the block with comments like ... rest of code.... By identifying unique anchors at the start and end of the block, the algorithm extracts the exact intermediary lines from the original file, dynamically reconstructing the correct replacement target and successfully bridging the gap over the model's truncated output.
+
+## Testing
+
+Install the development dependencies and run the full default suite:
+
+```bash
+python -m pip install -e ".[dev]"
+python -m pytest
+```
+
+Pass 7 semantic tests use the real `sentence-transformers/all-MiniLM-L6-v2`
+model and do not download model files during pytest runs. They run only when the
+model is already cached locally:
+
+```bash
+python -m pytest -m semantic
+```

@@ -38,3 +38,8 @@ include = ["edit_file*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --tb=short"
+markers = [
+    "e2e: tests that edit real temporary files end to end",
+    "integration: tests that require optional runtime integrations",
+    "semantic: tests that require a locally cached sentence-transformers model",
+]
