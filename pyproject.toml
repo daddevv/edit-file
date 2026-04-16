@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edit-file"
+version = "0.1.0"
+description = "A reliable, fuzzy-matching code editing tool for AI agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["ai", "agents", "code-editing", "fuzzy-matching", "llm"]
+
+dependencies = []
+
+[project.optional-dependencies]
+semantic = [
+    "sentence-transformers>=5.4.1",
+    "numpy>=2.4.4",
+]
+full = [
+    "sentence-transformers>=5.4.1",
+    "numpy>=2.4.4",
+    "ast-grep-py>=0.12",
+]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+]
+
+[project.scripts]
+edit-file = "edit_file.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["edit_file*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
